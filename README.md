@@ -12,6 +12,8 @@ Projeto desenvolvido como exercício do [Curso Completo de JavaScript](https://w
 | ------ | ------ |
 | Node | https://nodejs.org/ |
 | Express | https://expressjs.com/ |
+| Ejs | https://ejs.co/ |
+| Bower | https://bower.io/ |
 
 <br>
 
