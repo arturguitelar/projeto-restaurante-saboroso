@@ -14,13 +14,18 @@ Projeto desenvolvido como exercício do [Curso Completo de JavaScript](https://w
 | Express | https://expressjs.com/ |
 | Ejs | https://ejs.co/ |
 | Bower | https://bower.io/ |
+| MySQL 2 | https://www.npmjs.com/package/mysql2 |
 
 <br>
 
 **Algumas coisas interessantes aprendidas durante o projeto:**
 
+- Conexão ao MySQL via NodeJS utilizando o MySQL2.
+
+
+Start do server:
 ```
-code
+set DEBUG=saboroso:* & npm start
 ```
 
 > Em progresso...
