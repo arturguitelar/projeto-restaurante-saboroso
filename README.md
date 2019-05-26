@@ -21,6 +21,7 @@ Projeto desenvolvido como exercício do [Curso Completo de JavaScript](https://w
 **Algumas coisas interessantes aprendidas durante o projeto:**
 
 - Conexão ao MySQL via NodeJS utilizando o MySQL2.
+- Configuração de rotas do Express.
 
 
 Start do server:
