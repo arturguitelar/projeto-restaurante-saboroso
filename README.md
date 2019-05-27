@@ -15,6 +15,9 @@ Projeto desenvolvido como exercício do [Curso Completo de JavaScript](https://w
 | Ejs | https://ejs.co/ |
 | Bower | https://bower.io/ |
 | MySQL 2 | https://www.npmjs.com/package/mysql2 |
+| Express Session | https://github.com/expressjs/session |
+| Connect Redis | https://github.com/tj/connect-redis |
+| Redis | https://redis.io/ |
 
 <br>
 
@@ -22,6 +25,9 @@ Projeto desenvolvido como exercício do [Curso Completo de JavaScript](https://w
 
 - Conexão ao MySQL via NodeJS utilizando o MySQL2.
 - Configuração de rotas do Express.
+- Templates com Ejs.
+- Sessões utilizando Express Session.
+- Armazenamento de Sessions com Redis.
 
 
 Start do server:
