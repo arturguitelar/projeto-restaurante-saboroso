@@ -3,9 +3,18 @@ const router = express.Router();
 
 const users = require('./../inc/users');
 
+/** Midleware para verificaçãod e login */
+router.use(function(req, res, next) {
+    
+    if (['/login'].indexOf(req.url) === -1 && !req.session.user) {
+        res.redirect('/admin/login');
+    } else {
+        next();
+    }
+});
+
 /** Home */
 router.get('/', function(req, res, next) {
-
     res.render('admin/index');
 });
 
@@ -31,6 +40,14 @@ router.post('/login', function(req, res, next) {
 
 router.get('/login', function(req, res, next) {
     users.render(req, res, null);
+});
+
+/** Logout */
+router.get('/logout', function(req, res, next) {
+
+    delete req.session.user;
+
+    res.redirect('/admin/login');
 });
 
 /** Contacts */

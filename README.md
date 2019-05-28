@@ -28,7 +28,7 @@ Projeto desenvolvido como exercício do [Curso Completo de JavaScript](https://w
 - Templates com Ejs.
 - Sessões utilizando Express Session.
 - Armazenamento de Sessions com Redis.
-
+- Redirecionamento de rotas utilizando uma função como middleware.
 
 Start do server:
 ```
