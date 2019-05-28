@@ -29,6 +29,7 @@ Projeto desenvolvido como exercício do [Curso Completo de JavaScript](https://w
 - Sessões utilizando Express Session.
 - Armazenamento de Sessions com Redis.
 - Redirecionamento de rotas utilizando uma função como middleware.
+- Links de menu do admin montados dinamicamente.
 
 Start do server:
 ```
