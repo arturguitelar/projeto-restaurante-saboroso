@@ -23,7 +23,15 @@ router.use(function(req, res, next) {
 
 /** Home */
 router.get('/', function(req, res, next) {
-    res.render('admin/index', admin.getParams(req));
+
+    admin.dashboard().then(data => {
+
+        res.render('admin/index', admin.getParams(req, {
+            data
+        }));
+    }).catch(err => {
+        console.error(err);
+    });
 });
 
 /** Login */
