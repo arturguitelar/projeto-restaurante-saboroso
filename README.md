@@ -30,6 +30,7 @@ Projeto desenvolvido como exercício do [Curso Completo de JavaScript](https://w
 - Armazenamento de Sessions com Redis.
 - Redirecionamento de rotas utilizando uma função como middleware.
 - Links de menu do admin montados dinamicamente.
+- CRUD.
 
 Start do server:
 ```

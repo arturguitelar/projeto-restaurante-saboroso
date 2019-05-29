@@ -3,6 +3,7 @@ const router = express.Router();
 
 const users = require('./../inc/users');
 const admin = require('../inc/admin');
+const menus = require('../inc/menus');
 
 /** Middleware para verificação de login */
 router.use(function(req, res, next) {
@@ -26,9 +27,7 @@ router.get('/', function(req, res, next) {
 
     admin.dashboard().then(data => {
 
-        res.render('admin/index', admin.getParams(req, {
-            data
-        }));
+        res.render('admin/index', admin.getParams(req, { data }));
     }).catch(err => {
         console.error(err);
     });
@@ -81,7 +80,11 @@ router.get('/emails', function(req, res, next) {
 /** Menus */
 router.get('/menus', function(req, res, next) {
 
-    res.render('admin/menus', admin.getParams(req));
+    menus.getMenus().then(data => {
+
+        res.render('admin/menus', admin.getParams(req, { data }));
+    });
+
 });
 
 /** Reservations */
