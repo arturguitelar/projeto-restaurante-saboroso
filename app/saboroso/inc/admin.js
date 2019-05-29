@@ -1,7 +1,20 @@
 module.exports = {
 
     /**
-     * @req Requisição atual.
+     * @req Requisição.
+     * @params Parâmetros.
+     * @returns Novo objeto criado.
+     */
+    getParams(req, params) {
+
+        return Object.assign({}, {
+            menus: req.menus,
+            user: req.session.user
+        }, params);
+    },
+
+    /**
+     * @req Requisição.
      * @returns Lista de menus.
      */
     getMenus(req) {

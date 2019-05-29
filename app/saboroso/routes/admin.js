@@ -23,9 +23,7 @@ router.use(function(req, res, next) {
 
 /** Home */
 router.get('/', function(req, res, next) {
-    res.render('admin/index', {
-        menus: req.menus
-    });
+    res.render('admin/index', admin.getParams(req));
 });
 
 /** Login */
@@ -63,42 +61,33 @@ router.get('/logout', function(req, res, next) {
 /** Contacts */
 router.get('/contacts', function(req, res, next) {
 
-    res.render('admin/contacts', {
-        menus: req.menus
-    });
+    res.render('admin/contacts', admin.getParams(req));
 });
 
 /** Emails */
 router.get('/emails', function(req, res, next) {
 
-    res.render('admin/emails', {
-        menus: req.menus
-    });
+    res.render('admin/emails', admin.getParams(req));
 });
 
 /** Menus */
 router.get('/menus', function(req, res, next) {
 
-    res.render('admin/menus', {
-        menus: req.menus
-    });
+    res.render('admin/menus', admin.getParams(req));
 });
 
 /** Reservations */
 router.get('/reservations', function(req, res, next) {
 
-    res.render('admin/reservations', {
-        menus: req.menus,
+    res.render('admin/reservations', admin.getParams(req, {
         date: {}
-    });
+    }));
 });
 
 /** Users */
 router.get('/users', function(req, res, next) {
 
-    res.render('admin/users', {
-        menus: req.menus
-    });
+    res.render('admin/users', admin.getParams(req));
 });
 
 module.exports = router;
