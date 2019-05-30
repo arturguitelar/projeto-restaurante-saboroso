@@ -19,6 +19,7 @@ Projeto desenvolvido como exercício do [Curso Completo de JavaScript](https://w
 | Connect Redis | https://github.com/tj/connect-redis |
 | Redis | https://redis.io/ |
 | Formidable | https://github.com/felixge/node-formidable |
+| MomentJS | https://momentjs.com/ |
 
 <br>
 
