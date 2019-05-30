@@ -49,7 +49,7 @@
                             <td><%= row.description %></td>
                             <td>R$ <%= row.price %></td>
                             <td>
-                                <button type="button" class="btn btn-xs btn-info btn-update" data-toggle="modal" data-target="#modal-update">
+                                <button type="button" class="btn btn-xs btn-info btn-update">
                                     <i class="fa fa-pencil"></i> Editar
                                 </button>
                                 &nbsp;
@@ -153,7 +153,12 @@
             
 <%- include('inc/footer') -%>
 
+<script src="/js/hcode-filereader.js"></script>
+
 <script>
+new HcodeFilereader('#modal-create [type=file]', '#modal-create img');
+new HcodeFilereader('#modal-update [type=file]', '#modal-update img');
+
 const formCreate = document.querySelector('#modal-create form');
 
 formCreate.addEventListener('submit', e => {
@@ -170,5 +175,35 @@ formCreate.addEventListener('submit', e => {
     .then(json => {
         window.location.reload();
     });
+});
+
+let formUpdate = document.querySelector('#modal-update form');
+
+[...document.querySelectorAll('.btn-update')].forEach(btn => {
+
+    btn.addEventListener('click', e => {
+        
+        let tr = e.path.find(el => {
+            return (el.tagName.toUpperCase() === 'TR');
+        });
+
+        let data = JSON.parse(tr.dataset.row);
+        
+        for (let name in data) {
+
+            switch(name) {
+                case 'photo':
+                    formUpdate.querySelector('img').src = '/' + data[name];
+                    break;
+                
+                default:
+                    let input = formUpdate.querySelector(`[name=${name}]`);
+                    if (input) input.value = data[name];
+            }
+        }
+
+        $('#modal-update').modal('show');
+    });
+
 });
 </script>
