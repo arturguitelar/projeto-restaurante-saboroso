@@ -41,7 +41,7 @@ module.exports = {
 
             if (files.photo.name) {
                 
-                queryPhoto = ',photo = ?';
+                queryPhoto = ', photo = ?';
 
                 params.push(fields.photo);
             }
@@ -73,6 +73,27 @@ module.exports = {
             }
 
             conn.query(query , params, (err, results) => {
+
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+    },
+
+    /**
+     * @param {*} id Id do registro que será deletado.
+     * @returns Registro deletado.
+     */
+    delete(id) {
+        
+        return new Promise((resolve, reject) => {
+
+            conn.query(`
+                DELETE FROM tb_menus WHERE id = ?
+            `, [ id ], (err, results) => {
 
                 if (err) {
                     reject(err);
