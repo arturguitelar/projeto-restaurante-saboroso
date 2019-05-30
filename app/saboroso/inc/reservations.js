@@ -13,6 +13,25 @@ module.exports = {
             success
         });
     },
+    
+    /**
+     * @return Reservas ordenadas por data.
+     */
+    getReservations() {
+
+        return new Promise((resolve, reject) => {
+
+            conn.query("SELECT * FROM tb_reservations ORDER BY date DESC", (err, results) => {
+
+                if (err) {
+                    reject(err);
+                } else {
+            
+                    resolve(results);
+                }
+            });
+        });
+    },
 
     /**
      * @param {*} fields Objeto com os campos a serem inseridos no banco.

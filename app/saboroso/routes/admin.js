@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const moment = require('moment');
 
 const users = require('./../inc/users');
 const admin = require('./../inc/admin');
 const menus = require('./../inc/menus');
 const reservations = require('./../inc/reservations');
+
+moment.locale('pt-BR');
 
 /** Middleware para verificação de login */
 router.use(function(req, res, next) {
@@ -109,9 +112,14 @@ router.delete('/menus/:id', function(req, res, next) {
 /** Reservations */
 router.get('/reservations', function(req, res, next) {
 
-    res.render('admin/reservations', admin.getParams(req, {
-        date: {}
-    }));
+    reservations.getReservations().then(data => {
+
+        res.render('admin/reservations', admin.getParams(req, {
+            date: {},
+            data,
+            moment
+        }));
+    });
 });
 
 router.post('/reservations', function(req, res, next) {
