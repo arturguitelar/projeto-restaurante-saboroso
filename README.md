@@ -18,6 +18,7 @@ Projeto desenvolvido como exercício do [Curso Completo de JavaScript](https://w
 | Express Session | https://github.com/expressjs/session |
 | Connect Redis | https://github.com/tj/connect-redis |
 | Redis | https://redis.io/ |
+| Formidable | https://github.com/felixge/node-formidable |
 
 <br>
 
@@ -31,6 +32,7 @@ Projeto desenvolvido como exercício do [Curso Completo de JavaScript](https://w
 - Redirecionamento de rotas utilizando uma função como middleware.
 - Links de menu do admin montados dinamicamente.
 - CRUD.
+- Parsing formulário com Formidable.
 
 Start do server:
 ```
