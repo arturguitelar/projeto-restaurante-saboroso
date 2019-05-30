@@ -33,6 +33,8 @@ Projeto desenvolvido como exercício do [Curso Completo de JavaScript](https://w
 - Links de menu do admin montados dinamicamente.
 - CRUD.
 - Parsing formulário com Formidable.
+- Criação de plugins personalizados.
+- Prototype.
 
 Start do server:
 ```

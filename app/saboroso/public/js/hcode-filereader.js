@@ -1,5 +1,13 @@
+/**
+ * Faz o preview de uma imagem que foi carregada por input "file"
+ * especificado para um elemento img especificado.
+ */
 class HcodeFilereader {
 
+    /**
+     * @param { String } inputElement Id do input file. 
+     * @param { String } imgElement  Id do elemento img onde será mostrada a imagem.
+     */
     constructor(inputElement, imgElement) {
         
         this.inputEl = inputElement;
