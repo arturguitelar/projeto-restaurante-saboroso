@@ -20,25 +20,49 @@ module.exports = {
      */
     save(fields) {
         
-        return new Promise((resolve, rejet) => {
+        return new Promise((resolve, reject) => {
 
-            // invertendo a data recebida para o padrão do banco de dados mysql: ano/mês/dia
-            let date = fields.date.split('/');
-            fields.date = `${date[2]}-${date[1]}-${date[0]}`;
+            if (fields.date.indexOf('/') > -1) {
 
-            conn.query(`
-                INSERT INTO tb_reservations (name, email, people, date, time)
-                VALUES (?, ?, ?, ?, ?)
-            `, [
+                // invertendo a data recebida para o padrão do banco de dados mysql: ano/mês/dia
+                let date = fields.date.split('/');
+                fields.date = `${date[2]}-${date[1]}-${date[0]}`;
+            }
+
+            let query, params = [
                 fields.name,
                 fields.email,
                 fields.people,
                 fields.date,
                 fields.time
-            ], (err, results) => {
+            ];
+
+            if (parseInt(fields.id) > 0) {
+                // neste caso, será um update
+                query = `
+                    UPDATE tb_reservations
+                    SET
+                        name = ?,
+                        email = ?,
+                        people = ?,
+                        date = ?,
+                        time = ?
+                    WHERE id = ?
+                `;
+                
+                params.push(fields.id);
+            } else {
+                // neste caso será um insert
+                query = `
+                    INSERT INTO tb_reservations (name, email, people, date, time)
+                    VALUES (?, ?, ?, ?, ?)
+                `;
+            }
+
+            conn.query(query, params, (err, results) => {
 
                 if (err) {
-                    rejet(err);
+                    reject(err);
                 } else {
                     resolve(results);
                 }

@@ -47,7 +47,7 @@ app.use(session({
     }),
     secret: 'p@ssw0rd', // para criptografia dos dados da sessão
     resave: true, // recria uma session caso ela expire
-    saveUnitialized: true // já deixa a sessão salva no banco mesmo sem ter utilizado-a
+    saveUninitialized: true // já deixa a sessão salva no banco mesmo sem ter utilizado-a
 }));
 
 app.use(logger('dev'));

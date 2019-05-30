@@ -10,7 +10,6 @@ HTMLFormElement.prototype.save = function() {
         let form = this;
     
        form.addEventListener('submit', e => {
-
             e.preventDefault();
             // obtendo o formulário como um objeto
             const formData = new FormData(form);
