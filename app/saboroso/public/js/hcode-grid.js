@@ -4,10 +4,16 @@
 class HcodeGrid {
 
     constructor(configs) {
+
+        configs.listeners = Object.assign({
+            afterUpdateClick: e => {
+                $('#modal-update').modal('show');
+            }
+        }, configs.listeners);
+        
         this.options = Object.assign({}, {        
             formCreate: '#modal-create form',
             formUpdate: '#modal-update form',
-            modalUpdate: '#modal-update',
             btnUpdate: '.btn-update',
             btnDelete: '.btn-delete'
         }, configs);
@@ -61,7 +67,7 @@ class HcodeGrid {
                     }
                 }
 
-                $(this.options.modalUpdate).modal('show');
+                this.fireEvents('afterUpdateClick', [e]);
             });
         });
 
@@ -88,5 +94,14 @@ class HcodeGrid {
                 }
             });
         });
+    }
+
+    /**
+     * @param {String} name Nome da função.
+     * @param {Array} args Argumentos da função.
+     */
+    fireEvents(name, args) {
+        if (this.options.listeners[name] && typeof this.options.listeners[name] === 'function')
+            this.options.listeners[name].apply(this, args);
     }
 }
