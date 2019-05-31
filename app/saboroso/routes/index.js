@@ -4,6 +4,7 @@ const router = express.Router();
 const menus = require('./../inc/menus');
 const reservations = require('./../inc/reservations');
 const contacts = require('./../inc/contacts');
+const emails = require('./../inc/emails');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -95,6 +96,16 @@ router.get('/services', function(req, res, next) {
         title: 'Serviços - Restaurante Saboroso!',
         background: 'images/img_bg_1.jpg',
         h1: 'É um prazer poder servir!'
+    });
+});
+
+/** Subscribe */
+router.post('/subscribe', function(req, res, next) {
+
+    emails.save(req).then(results => {
+        res.send(results);
+    }).catch(err => {
+        res.send(err);
     });
 });
 
