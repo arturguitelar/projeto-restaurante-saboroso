@@ -36,6 +36,7 @@ Projeto desenvolvido como exercício do [Curso Completo de JavaScript](https://w
 - Parsing formulário com Formidable.
 - Criação de plugins personalizados.
 - Prototype.
+- Criação de componentes.
 
 Start do server:
 ```
