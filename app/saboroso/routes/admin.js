@@ -6,6 +6,7 @@ const users = require('./../inc/users');
 const admin = require('./../inc/admin');
 const menus = require('./../inc/menus');
 const reservations = require('./../inc/reservations');
+const contacts = require('./../inc/contacts');
 
 moment.locale('pt-BR');
 
@@ -72,7 +73,19 @@ router.get('/logout', function(req, res, next) {
 /** Contacts */
 router.get('/contacts', function(req, res, next) {
 
-    res.render('admin/contacts', admin.getParams(req));
+    contacts.getContacts().then(data => {
+
+        res.render('admin/contacts', admin.getParams(req, { data }));
+    })
+});
+
+router.delete('/contacts/:id', function(req, res, next) {
+
+    contacts.delete(req.params.id).then(results => {
+        res.send(results);
+    }).catch(err => {
+        res.send(err);
+    });
 });
 
 /** Emails */
