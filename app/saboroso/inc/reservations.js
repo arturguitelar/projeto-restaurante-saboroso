@@ -16,17 +16,38 @@ module.exports = {
     },
     
     /**
-     * @return Reservas ordenadas por data.
+     * @param req Dados da requisição.
+     * @returns Reservas ordenadas por data.
      */
-    getReservations(page) {
+    getReservations(req) {
 
-        if (!page) page = 1;
+        return new Promise((resolve, reject) => {
 
-        let pag = new Pagination(
-            `SELECT SQL_CALC_FOUND_ROWS * FROM tb_reservations ORDER BY name LIMIT ?, ?`
-        );
+            let page = req.query.page;
+            let dtstart = req.query.start;
+            let dtend = req.query.end;
 
-        return pag.getPage(page);
+            if (!page) page = 1;
+    
+            let params = [];
+    
+            if (dtstart && dtend) params.push(dtstart, dtend);
+    
+            let pag = new Pagination(`
+                SELECT SQL_CALC_FOUND_ROWS * 
+                FROM tb_reservations 
+                ${ (dtstart && dtend) ? 'WHERE date BETWEEN ? and ?' : ''}
+                ORDER BY name LIMIT ?, ?
+            `, params);
+    
+            pag.getPage(page).then(data => {
+
+                resolve({ 
+                    data, 
+                    links: pag.getNavigation(req.query) 
+                });
+            });
+        });
     },
 
     /**
