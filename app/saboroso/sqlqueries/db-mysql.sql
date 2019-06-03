@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `saboroso` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `saboroso`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: saboroso
@@ -42,30 +44,6 @@ LOCK TABLES `tb_contacts` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tb_emails`
---
-
-DROP TABLE IF EXISTS `tb_emails`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tb_emails` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(256) NOT NULL,
-  `register` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tb_emails`
---
-
-LOCK TABLES `tb_emails` WRITE;
-/*!40000 ALTER TABLE `tb_emails` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_emails` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tb_menus`
 --
 
@@ -80,7 +58,7 @@ CREATE TABLE `tb_menus` (
   `photo` varchar(256) NOT NULL,
   `register` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,7 +67,6 @@ CREATE TABLE `tb_menus` (
 
 LOCK TABLES `tb_menus` WRITE;
 /*!40000 ALTER TABLE `tb_menus` DISABLE KEYS */;
-INSERT INTO `tb_menus` VALUES (1,'Bife de Costela com molho','Vide electram sadipscing et per. Aenean aliquam molestie leo, vitae iaculis nisl.',35.69,'images/img_1.jpg','2018-09-12 19:48:58'),(2,'Hambúrguer com Fritas','Vide electram sadipscing et per. Aenean aliquam molestie leo, vitae iaculis nisl.',29.80,'images/img_2.jpg','2018-09-12 19:48:58'),(3,'Chilli com Carne','Vide electram sadipscing et per. Aenean aliquam molestie leo, vitae iaculis nisl.',29.40,'images/img_3.jpg','2018-09-12 19:48:58');
 /*!40000 ALTER TABLE `tb_menus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,4 +142,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-09-17  8:18:38
+-- Dump completed on 2018-04-17 16:02:26
