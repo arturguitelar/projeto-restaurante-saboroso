@@ -55,6 +55,9 @@
             <!-- /.box-header -->
 
             <div class="box-body no-padding">
+                <div style="padding: 10px">
+                    <canvas id="chart" style="height: 250px"></canvas>
+                </div>
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
@@ -212,6 +215,7 @@
 <%- include('inc/footer') -%>
 
 <script src="/js/moment.min.js"></script>
+<script src="/admin/bower_components/chart.js/dist/Chart.min.js"></script>
 <script src="/js/hcode-formsave.js"></script>
 <script src="/js/hcode-grid.js"></script>
 
@@ -235,4 +239,42 @@ new HcodeGrid({
         }
     }
 });
+
+// Chart
+let graph = new Chart(document.querySelector('#chart').getContext('2d'), {
+    type: 'line',
+    data: {
+        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+        datasets: [{
+            data: [3, 5, 6, 2, 5, 2],
+            label: 'Reserva',
+            backgroundColor: 'rgb(54, 162, 235)',
+            borderColor: 'rgb(54, 62, 235)',
+            fill: true,
+            pointBackgroundColor: '#fff'
+        }]
+    },
+    options: {
+        tooltips: {
+            mode: 'index',
+            intersect: false
+        },
+        scales: {
+            xAxes: [{
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Mês'
+                }
+            }],
+            yAxes: [{
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Reservas'
+                }
+            }]
+        }
+    }
+}) 
 </script>

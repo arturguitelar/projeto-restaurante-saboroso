@@ -20,6 +20,7 @@ Projeto desenvolvido como exercício do [Curso Completo de JavaScript](https://w
 | Redis | https://redis.io/ |
 | Formidable | https://github.com/felixge/node-formidable |
 | MomentJS | https://momentjs.com/ |
+| ChartJS | https://www.chartjs.org/ |
 
 <br>
 
