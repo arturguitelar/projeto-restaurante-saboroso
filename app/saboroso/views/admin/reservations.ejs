@@ -243,17 +243,7 @@ new HcodeGrid({
 // Chart
 let graph = new Chart(document.querySelector('#chart').getContext('2d'), {
     type: 'line',
-    data: {
-        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
-        datasets: [{
-            data: [3, 5, 6, 2, 5, 2],
-            label: 'Reserva',
-            backgroundColor: 'rgb(54, 162, 235)',
-            borderColor: 'rgb(54, 62, 235)',
-            fill: true,
-            pointBackgroundColor: '#fff'
-        }]
-    },
+    data: {},
     options: {
         tooltips: {
             mode: 'index',
@@ -276,5 +266,24 @@ let graph = new Chart(document.querySelector('#chart').getContext('2d'), {
             }]
         }
     }
-}) 
+});
+
+// buscando os dados para o gráfico via AJAX
+fetch(`/admin/reservations/chart${window.location.search}`)
+    .then(response => response.json())
+    .then(json => {
+        graph.data = {
+            labels: json.months,
+            datasets: [{
+                data: json.values,
+                label: 'Reserva',
+                backgroundColor: 'rgb(54, 162, 235)',
+                borderColor: 'rgb(54, 62, 235)',
+                fill: true,
+                pointBackgroundColor: '#fff'
+            }]
+        };
+
+        graph.update();
+    });
 </script>
