@@ -16,6 +16,34 @@ module.exports = {
             success
         });
     },
+
+    /**
+     * @returns Contagem de registros nas tabelas:
+     * - tb_contacts
+     * - tb_menus
+     * - tb_reservations
+     * - tb_users
+     */
+    dashboard() {
+
+        return new Promise((resolve, reject) => {
+
+            conn.query(`
+                SELECT
+                    (SELECT COUNT(*) FROM tb_contacts) AS nrcontacts,
+                    (SELECT COUNT(*) FROM tb_menus) AS nrmenus,
+                    (SELECT COUNT(*) FROM tb_reservations) AS nrreservations,
+                    (SELECT COUNT(*) FROM tb_users) AS nrusers;
+            `, (err, results) => {
+
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results[0]);
+                }
+            });
+        });
+    },
     
     /**
      * @param req Dados da requisição.
@@ -129,6 +157,12 @@ module.exports = {
         });
     },
     
+    /**
+     * Nota: Utilizado para a geração de gráficos no index da área admin.
+     * @param {*} req Requisição.
+     * @returns Listagem de registros em um determinado período, agrupada por ano e mês
+     * e ordenada por ano e mês de forma decrescente.
+     */
     chart(req) {
 
         return new Promise((resolve, reject) => {

@@ -21,7 +21,12 @@ Projeto desenvolvido como exercício do [Curso Completo de JavaScript](https://w
 | Formidable | https://github.com/felixge/node-formidable |
 | MomentJS | https://momentjs.com/ |
 | ChartJS | https://www.chartjs.org/ |
+| Socket.io | https://socket.io/ |*
 
+* url para testar se o socket.io está funcionando:
+```
+/socket.io/socket.io.js
+```
 <br>
 
 **Algumas coisas interessantes aprendidas durante o projeto:**
@@ -44,7 +49,7 @@ Start do server:
 set DEBUG=saboroso:* & npm start
 ```
 
-> Em progresso...
+## Este módulo do curso termina com a implementação do Socket.io. Logo, dou o projeto por encerrado até eu ter tempo de fazer atualizações nele. =]
 
 <br>
 
